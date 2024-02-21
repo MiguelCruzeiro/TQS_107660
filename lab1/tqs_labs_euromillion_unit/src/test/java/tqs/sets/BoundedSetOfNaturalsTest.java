@@ -16,6 +16,7 @@ class BoundedSetOfNaturalsTest {
     private BoundedSetOfNaturals setA;
     private BoundedSetOfNaturals setB;
     private BoundedSetOfNaturals setC;
+    private BoundedSetOfNaturals setD;
 
 
     @BeforeEach
@@ -40,11 +41,12 @@ class BoundedSetOfNaturalsTest {
 
         assertEquals(1, setA.size());
 
-        setA = BoundedSetOfNaturals.fromArray(new int[]{99});
+        setD = new BoundedSetOfNaturals(10);
+        setD.add(99);
 
-        assertThrows(IllegalArgumentException.class, () -> setA.add(99), "add: duplicate element not detected.");
+        assertThrows(IllegalArgumentException.class, () -> setD.add(99), "add: duplicate element not detected.");
 
-        assertThrows(IllegalArgumentException.class, () -> setA.add(-99), "Illegal argument: not a natural number");
+        assertThrows(IllegalArgumentException.class, () -> setD.add(-99), "Illegal argument: not a natural number");
     }
 
     //@Disabled("TODO revise to test the construction from invalid arrays")
@@ -56,5 +58,10 @@ class BoundedSetOfNaturalsTest {
         assertThrows(IllegalArgumentException.class, () -> setA.add(elems));
     }
 
+    @Test
+    public void testIntersects() {
+        assertFalse(setB.intersects(setC), "intersects: sets do not intersect.");
+        assertFalse(setA.intersects(setB), "intersects: sets intersect.");
+    }
 
 }

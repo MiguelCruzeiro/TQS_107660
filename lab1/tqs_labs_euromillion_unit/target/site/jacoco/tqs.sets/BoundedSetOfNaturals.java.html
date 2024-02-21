@@ -20,12 +20,12 @@ public class BoundedSetOfNaturals implements Iterable&lt;Integer&gt; {
 <span class="fc bfc" id="L20" title="All 2 branches covered.">        if (this.collection.size() &gt;= maxSize) {</span>
 <span class="fc" id="L21">            throw new IllegalArgumentException(&quot;bounded set is full. no more elements allowed.&quot;);</span>
         }
-<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (this.collection.contains(element)) {</span>
-<span class="nc" id="L24">            throw new IllegalArgumentException(&quot;duplicate value: &quot; + element);</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (this.collection.contains(element)) {</span>
+<span class="fc" id="L24">            throw new IllegalArgumentException(&quot;duplicate value: &quot; + element);</span>
         }
 
-<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if (element &lt;= 0) {</span>
-<span class="nc" id="L28">            throw new IllegalArgumentException(&quot;Illegal argument: not a natural number&quot;);</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (element &lt;= 0) {</span>
+<span class="fc" id="L28">            throw new IllegalArgumentException(&quot;Illegal argument: not a natural number&quot;);</span>
         }
 
 <span class="fc" id="L31">        collection.add(element);</span>
@@ -66,7 +66,7 @@ public class BoundedSetOfNaturals implements Iterable&lt;Integer&gt; {
 
     //TODO implement the intersect logic
     public boolean intersects(BoundedSetOfNaturals subset) {
-<span class="nc" id="L69">        return false;</span>
+<span class="fc" id="L69">        return false;</span>
     }
 
     public boolean contains(Integer element) {
