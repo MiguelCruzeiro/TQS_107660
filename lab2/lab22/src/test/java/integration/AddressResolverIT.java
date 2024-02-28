@@ -7,15 +7,24 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
+import geocoding.*;
+import connection.*;
+
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AddressResolverIT {
 
+    AddressResolverService addressResolverService;
+
 
     @BeforeEach
     public void init(){
+        addressResolverService = new AddressResolverService(new TqsBasicHttpClient());
+        
     }
 
 
@@ -23,10 +32,12 @@ public class AddressResolverIT {
     @Test
     public void whenGoodCoordidates_returnAddress() throws IOException, URISyntaxException, ParseException {
 
-        //todo
-        System.out.println("AddressResolverIT: whenGoodCoordidates_returnAddress");
 
-        // repeat the same tests conditions from AddressResolverTest, without mocks
+        Optional<Address> address = addressResolverService.findAddressForLocation(38.743739, -9.230243);
+        Address expected = new Address("Autoestrada Radial de Sintra", "Amadora", "2720", "");
+        assertTrue(address.isPresent());
+        assertEquals(expected, address.get());
+
 
     }
 
@@ -34,8 +45,8 @@ public class AddressResolverIT {
     @Test
     public void whenBadCoordidates_thenReturnNoValidAddrress() throws IOException, URISyntaxException, ParseException {
 
-        //todo
-        // repeat the same tests conditions from AddressResolverTest, without mocks
+        Optional<Address> address = addressResolverService.findAddressForLocation(-361, -361);
+        assertTrue(address.isEmpty());
         
     }
 
