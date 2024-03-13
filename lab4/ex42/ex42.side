@@ -1,0 +1,145 @@
+{
+  "id": "f2effa14-6c80-4e6c-8801-e74bd83872a5",
+  "version": "2.0",
+  "name": "ex42",
+  "url": "https://blazedemo.com/",
+  "tests": [{
+    "id": "060c1534-0830-4836-83ee-37c1693f8b14",
+    "name": "wx42",
+    "commands": [{
+      "id": "b1ffc9be-b5c4-4a9e-a6fa-50c34a12e3ea",
+      "comment": "",
+      "command": "open",
+      "target": "https://blazedemo.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "97f37f98-06ef-49a5-be61-8223945e8f67",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x691",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "542f7cbd-4204-453c-b323-ae1338da66f5",
+      "comment": "",
+      "command": "click",
+      "target": "name=fromPort",
+      "targets": [
+        ["name=fromPort", "name"],
+        ["css=.form-inline:nth-child(1)", "css:finder"],
+        ["xpath=//select[@name='fromPort']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "62f1d849-04eb-4963-98fa-c9a8787b172c",
+      "comment": "",
+      "command": "select",
+      "target": "name=fromPort",
+      "targets": [],
+      "value": "label=Boston"
+    }, {
+      "id": "a4dd0250-781e-4b39-b4ea-aadfcae91cf9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-inline:nth-child(1) > option:nth-child(3)",
+      "targets": [
+        ["css=.form-inline:nth-child(1) > option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='Boston']", "xpath:attributes"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Boston')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b3cb1fa0-80fd-4b1d-9592-ed05037fa545",
+      "comment": "",
+      "command": "click",
+      "target": "name=toPort",
+      "targets": [
+        ["name=toPort", "name"],
+        ["css=.form-inline:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='toPort']", "xpath:attributes"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bac04b6-f814-4c80-925f-891cf3988b50",
+      "comment": "",
+      "command": "select",
+      "target": "name=toPort",
+      "targets": [],
+      "value": "label=London"
+    }, {
+      "id": "a8bbe780-df99-43a3-a5f6-56084fdabf1f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-inline:nth-child(4) > option:nth-child(3)",
+      "targets": [
+        ["css=.form-inline:nth-child(4) > option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='London']", "xpath:attributes"],
+        ["xpath=//select[2]/option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'London')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4a9af76-2c30-4000-a5c1-d7b1f0f75949",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//input[@value='Find Flights']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afea2804-c38f-4373-b7c5-a3885762ebf5",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .btn",
+      "targets": [
+        ["css=tr:nth-child(1) .btn", "css:finder"],
+        ["xpath=//input[@value='Choose This Flight']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e58024de-2617-42f3-b292-6682d234188a",
+      "comment": "",
+      "command": "click",
+      "target": "id=zipCode",
+      "targets": [
+        ["id=zipCode", "id"],
+        ["name=zipCode", "name"],
+        ["css=#zipCode", "css:finder"],
+        ["xpath=//input[@id='zipCode']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cec6bbb7-c53b-4b76-87d0-26e0498f2975",
+      "comment": "",
+      "command": "type",
+      "target": "id=zipCode",
+      "targets": [
+        ["id=zipCode", "id"],
+        ["name=zipCode", "name"],
+        ["css=#zipCode", "css:finder"],
+        ["xpath=//input[@id='zipCode']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": "1234"
+    }]
+  }],
+  "suites": [{
+    "id": "457198c6-ac3a-4665-aa69-d41576cf8030",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["060c1534-0830-4836-83ee-37c1693f8b14"]
+  }],
+  "urls": [],
+  "plugins": []
+}
