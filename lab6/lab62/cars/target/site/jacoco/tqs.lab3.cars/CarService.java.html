@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CarService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cars</a> &gt; <a href="index.source.html" class="el_package">tqs.lab3.cars</a> &gt; <span class="el_source">CarService.java</span></div><h1>CarService.java</h1><pre class="source lang-java linenums">package tqs.lab3.cars;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+
+@Service
+<span class="fc" id="L12">public class CarService {</span>
+
+    @Autowired
+    private CarsRepository carsRepository;
+
+    public Car saveCar(Car car) {
+<span class="nc" id="L18">        Car s = carsRepository.save(car);</span>
+<span class="nc" id="L19">        return s;</span>
+    }
+
+    public Car getCarById(Long id) {
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (carsRepository.findById(id).isPresent()) {</span>
+<span class="fc" id="L24">            return carsRepository.findById(id).get();</span>
+        }
+<span class="fc" id="L26">        return null;</span>
+    }
+
+    public List&lt;Car&gt; getCarByMaker(String maker) {
+<span class="fc" id="L30">        return carsRepository.findByMaker(maker);</span>
+    }
+
+    public Car getCarByModel(String model) {
+<span class="nc" id="L34">        return carsRepository.findByModel(model);</span>
+    }
+
+    public List&lt;Car&gt; getAllCars() {
+<span class="fc" id="L38">        return carsRepository.findAll();</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
