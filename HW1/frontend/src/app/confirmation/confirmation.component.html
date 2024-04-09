@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Reservation Confirmation</h2>
+    <div class="details">
+        <p><strong>Reservation ID:</strong> {{ reservationId }}</p>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Initial City:</strong> {{ initialCity.name }}</p>
+        <p><strong>Final City:</strong> {{ finalCity.name }}</p>
+        <p><strong>Number of Seats:</strong> {{ numSeats }}</p>
+        <p><strong>Total Price:</strong> {{ totalPrice }} EUR</p>
+        <p><strong>Trip Details:</strong></p>
+        <div class="trip-details">
+            <p><strong>Trip ID:</strong> {{ trip.id }}</p>
+            <p><strong>Departure Date:</strong> {{ trip.departureDateTime | date: 'medium' }}</p>
+            <p><strong>Base Price:</strong> {{ trip.basePrice }}</p>
+            <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p>
+            <p class="cities-label"><strong>Trip Stops:</strong></p>
+            <div class="city-cards">
+                <mat-card *ngFor="let city of trip.cities" class="city-card">
+                <mat-card-header>
+                    <mat-card-title [style.color]="city.name === initialCity.name || city.name === finalCity.name ? 'red' : 'inherit'" >{{ city.name }}</mat-card-title>
+                </mat-card-header>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

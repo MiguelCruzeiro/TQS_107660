@@ -1,0 +1,37 @@
+<!-- homepage.component.html -->
+
+<div class="container">
+  <h2>Select Initial and Final Cities</h2>
+  
+  <form (ngSubmit)="getTrips()">
+    <div class="form-group">
+      <label for="initialCity">Initial City:</label>
+      <select class="form-control" id="initialCity" name="initialCity" [(ngModel)]="initialCity">
+        <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="finalCity">Final City:</label>
+      <select class="form-control" id="finalCity" name="finalCity" [(ngModel)]="finalCity">
+        <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+      </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Get Trips</button>
+  </form>
+
+  <h2>Trips</h2>
+  <ul class="list-group" *ngIf="trips && trips.length > 0">
+    <li class="list-group-item" *ngFor="let trip of trips">
+      <a [routerLink]="['/reservation', trip.id, initialCity, finalCity]">{{ trip.id }} - Departure Date: {{ trip.departureDateTime | date: 'medium' }}</a>, Base Price: {{ trip.basePrice }}, Seats: {{ trip.seats }}, availableSeats: {{ trip.availableSeats }}
+      <ul>
+        Trip Stops:
+        <li *ngFor="let city of trip.cities" [style.color]="city.name === initialCity || city.name === finalCity ? 'red' : 'inherit'">{{ city.name }}</li>
+      </ul>
+    </li>
+  </ul>
+  <div *ngIf="trips && trips.length === 0">
+    No trips available for the selected cities.
+  </div>
+</div>
