@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  mysql_db:
+    image: mysql/mysql-server:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'rootpass'
+      MYSQL_DATABASE: 'tqs'
+      MYSQL_USER: 'spring'
+      MYSQL_PASSWORD: 'springpass'
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+      
+  spring:
+    build: ./hw1
+    container_name: spring
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    image: hw1
+    expose:
+      - 8080
+    networks:
+      - default
+      
+  angular:
+    build: ./frontend
+    container_name: angular
+    stdin_open: true
+    ports:
+      - 4200:4200
+    expose:
+      - 4200
+    restart: unless-stopped
+    image: frontend
+    networks:
+      - default
+
+
+  
+  

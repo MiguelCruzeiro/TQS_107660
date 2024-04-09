@@ -10,6 +10,10 @@ import tqs.homework.hw1.services.TripService;
 
 import org.springframework.http.ResponseEntity;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/reservations")
@@ -19,6 +23,11 @@ public class ReservationController {
     private final TripService tripService;
     private final CityService cityService;
 
+    @Operation(summary = "Get reservation by id")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Found the reservation"),
+        @ApiResponse(responseCode = "404", description = "Reservation not found")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservationById(@PathVariable Long id) {
         Reservation reservation = reservationService.getReservationById(id);
@@ -28,6 +37,11 @@ public class ReservationController {
         return ResponseEntity.ok(reservation);
     }
 
+    @Operation(summary = "Save reservation")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Reservation created"),
+        @ApiResponse(responseCode = "400", description = "Invalid input")
+    })
     @PostMapping
     public ResponseEntity<Reservation> saveReservation(@RequestBody Reservation reservation) {
         Trip trip = tripService.getTripById(reservation.getTrip().getId());
@@ -71,6 +85,10 @@ public class ReservationController {
     }
 
 
+    @Operation(summary = "Get all reservations")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Found all reservations")
+    })
     @GetMapping
     public ResponseEntity<Iterable<Reservation>> getAllReservations() {
         return ResponseEntity.ok(reservationService.getAllReservations());
